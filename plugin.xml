@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.outsystems.smartwatch.plugin" version="1.0"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>SmartwatchPlugin</name>
+
+	<js-module name="SmartwatchPlugin" src="www/SmartwatchPlugin.js">
+		<clobbers target="cordova.plugins.SmartwatchPlugin" />
+	</js-module>
+
+	<engines>
+    	<engine name="cordova" version=">=10.0.0"/>
+    	<engine name="cordova-android" version=">=9.0.0"/>
+  	</engines>
+
+	 <platform name="android">
+	 	<config-file target="config.xml" parent="/*">
+			<preference name="GradlePluginKotlinVersion" value="1.6.20" />
+			<preference name="GradlePluginKotlinEnabled" value="true" />
+            <preference name="GradlePluginKotlinCodeStyle" value="official" />
+            <preference name="AndroidXEnabled" value="true"/>
+
+			<feature name="SmartwatchPlugin">
+				<param name="android-package" value="com.outsystems.smartwatch.plugin.SmartwatchPlugin" />
+			</feature>
+
+		</config-file>
+
+        <source-file src="src/android/SmartwatchPlugin.kt" target-dir="app/src/main/kotlin/com/outsystems/smartwatch/plugin/" />
+    	<!-- Incluir o módulo WearOS -->
+    	<!--<framework src="src/android/smartwatch" custom="true" /> -->
+		<hook type="after_plugin_add" src="hooks/after_plugin_add.js" />
+		<hook type="after_prepare" src="hooks/after_prepare.js" />
+		
+		<resource-file src="src/android/res/values/wear.xml" target="res/values/wear.xml" />
+        <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
+
+  	</platform>
+
+
+</plugin>

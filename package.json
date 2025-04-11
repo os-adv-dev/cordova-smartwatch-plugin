@@ -1,0 +1,16 @@
+{
+  "name": "SmartwatchPlugin",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "com.outsystems.smartwatch.plugin",
+    "platforms": ["android"]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+
+  "author": "Paulo Camilo @ OutSystems",
+  "license": "MIT"
+}
