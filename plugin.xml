@@ -31,6 +31,8 @@
     	<!--<framework src="src/android/smartwatch" custom="true" /> -->
 		<hook type="after_plugin_add" src="hooks/after_plugin_add.js" />
 		<hook type="after_prepare" src="hooks/after_prepare.js" />
+		<hook type="before_compile" src="hooks/registerSmartwatchesSettingsGradle.js"/>
+		<hook type="after_compile" src="hooks/registerSmartwatchesSettingsGradle.js"/>
 		
 		<resource-file src="src/android/res/values/wear.xml" target="res/values/wear.xml" />
         <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
