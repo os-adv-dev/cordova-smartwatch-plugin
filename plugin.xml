@@ -30,8 +30,7 @@
     	<!-- Incluir o módulo WearOS -->
     	<!--<framework src="src/android/smartwatch" custom="true" /> -->
 		<hook type="after_plugin_add" src="hooks/after_plugin_add.js" />
-		<hook type="after_prepare" src="hooks/after_prepare.js" />
-		<hook type="before_compile" src="hooks/registerSmartwatchesSettingsGradle.js"/>
+		<hook type="before_prepare" src="hooks/after_prepare.js" />
 		<hook type="after_compile" src="hooks/registerSmartwatchesSettingsGradle.js"/>
 
 		<!--<hook type="before_compile" src="hooks/wearModule.js"/> -->
