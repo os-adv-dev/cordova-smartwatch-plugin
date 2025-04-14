@@ -39,8 +39,14 @@ class SmartwatchPlugin : CordovaPlugin() {
     ): Boolean {
         if (action == "sendTemplate") {
             scope.launch {
-                val message: String = args.getString(0)
+               val message: String = args.getString(0)
                 sendTemplate(message, callbackContext)
+            }
+            return true
+        }
+        if (action == "isSmartwatchConnected") {
+            scope.launch {
+                isSmartwatchConnected(callbackContext)
             }
             return true
         }
@@ -75,6 +81,19 @@ class SmartwatchPlugin : CordovaPlugin() {
             }
         } else {
             callbackContext.error("Expected one non-empty string argument.");
+        }
+    }
+
+    private suspend fun isSmartwatchConnected(callbackContext: CallbackContext?) {
+        val capabilityInfo: CapabilityInfo = withContext(Dispatchers.IO) {
+            capabilityClient.getCapability(SMARTWATCH_CAPABILITY, CapabilityClient.FILTER_ALL).await()
+        }
+
+        val connectedNodes = capabilityInfo.nodes
+        if(connectedNodes.isNotEmpty()) {
+            callbackContext?.success()
+        } else {
+            callbackContext?.error("No nodes found with the required capability.")
         }
     }
 
